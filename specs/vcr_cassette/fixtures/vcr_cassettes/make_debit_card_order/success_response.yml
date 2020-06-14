@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:10500/
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","method":"make_debit_card_order","params":[{"identity_number":"711217008682","code_word":"КакоеТоКодовоеСлово","product_type_id":"4065788238","order_id":"bd265a47-83e0-4082-afcf-4065788238","enable_sms":true,"delivery_method":"courier","city_code":"002","office_code":"002-009-01","phone_number":"+77051111759","additional_phone_number":"+77061122957","email":"example@gmail.com","address":"Bayzakova
+        str.","request_id":"d651673d-9442-49f2-9472-dfdh7tyy564u","request_owner":"CRM"}],"id":913308806228}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.1 (darwin17.6.0 x86_64) ruby/2.3.1p112
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '537'
+      Host:
+      - localhost:10500
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '95'
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","result":{"status":"created","documents":["DEBIT_CARD_AG"]},"id":913308806228}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 04:44:33 GMT
+recorded_with: VCR 5.0.0
