@@ -3,7 +3,7 @@
 # Senler: https://help.senler.ru/
 # API: https://help.senler.ru/razrabotchikam/api
 
-class SenlerIntegration
+class SenlerIntegrationClient
   API_VERSION = 2
   REQUEST_MASK = '[FILTERED]'.freeze
   MASKED_KEYS = %i{access_token}.freeze
