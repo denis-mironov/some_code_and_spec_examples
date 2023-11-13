@@ -10,7 +10,7 @@ class ReexecuteFolderHandler < BaseHandler
       status_info = esb.executeTransfer(folder)
       update_executed_folder(status_info)
     rescue => e
-      Log.info("При повторном вызове executeTransfer возникла ошибка")
+      Log.info('An error occurred when calling executeTransfer again')
       handle_error(e)
     end
 
@@ -20,7 +20,7 @@ class ReexecuteFolderHandler < BaseHandler
   def folder
     @folder ||= Folder.find(folder_id)
   rescue ActiveRecord::RecordNotFound
-    raise InternalError.new("Папка документов '#{folder_id}' не найдена")
+    raise InternalError.new("Folder '#{folder_id}' not found")
   end
 
   def handle_error(error)
@@ -41,8 +41,8 @@ class ReexecuteFolderHandler < BaseHandler
 
   def need_retry?(message)
     errors_for_retry = [
-      /невозможно найти вызываемый блок программы/,
-      /ESB сервер не доступен/
+      /can not find the called program block/,
+      /ESB server is unavailable/
     ]
     errors_for_retry.any? {|reg| reg =~ message}
   end
@@ -66,8 +66,12 @@ class ReexecuteFolderHandler < BaseHandler
 
     if folder.reexecution_quantity.to_s == REEXECUTION_QUANTITY
       folder.update(status: Folder::NOT_EXECUTED)
-      Log.info("ВНИМАНИЕ! Количество повторного исполнения папки с ID = #{folder.bank_folder_id} превысило указанное значение: #{REEXECUTION_QUANTITY}! Документ НЕ ИСПОЛНЕН! Статус папки в mod_finance: #{folder.status}")
+      Log.info(log_message)
     end
+  end
+
+  def log_message
+    "Attention! The number of times the folder with ID = #{folder.bank_folder_id} has been re-executed has exceeded the specified value!"
   end
 
   def update_failed_folder

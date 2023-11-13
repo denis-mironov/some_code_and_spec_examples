@@ -1,5 +1,6 @@
-# Переопределяет метод limited_nodes для применения кастомной пагинации.
-# Если в query пришел аргумент pagination, то выполняется кастомная пагинация, иначе по умолчанию.
+# Overrides the limited_nodes method to apply custom pagination.
+# If a query receives the pagination argument, then our custom pagination is performed,
+# otherwise the default pagination is used.
 
 module Extensions
   class CustomActiveRecordRelationConnection < GraphQL::Pagination::ActiveRecordRelationConnection

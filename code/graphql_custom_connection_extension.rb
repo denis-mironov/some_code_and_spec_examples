@@ -1,4 +1,4 @@
-# Добавляет аргумент pagination к полям с connection_type, и передает его в context.
+# Adds pagination argument to connetion_type fields and sends it to a context.
 
 module Extensions
   class CustomConnectionExtension < GraphQL::Schema::Field::ConnectionExtension

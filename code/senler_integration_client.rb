@@ -1,11 +1,9 @@
-# Класс для взаимодействия с Senler API.
-# Подробное описание в app/services/senler/subscribe_user_service.rb
+# A class for interacting with the Senler API.
 
 # Senler: https://help.senler.ru/
 # API: https://help.senler.ru/razrabotchikam/api
 
 class SenlerIntegration
-  # В версии 2 есть несколько улучшений в сравнении со стандартной 1
   API_VERSION = 2
   REQUEST_MASK = '[FILTERED]'.freeze
   MASKED_KEYS = %i{access_token}.freeze
@@ -54,8 +52,8 @@ class SenlerIntegration
       vk_group_id:        vk_group_id,
       access_token:       access_token,
       name:               title,
-      inactive:           1, # скрытая группа подписчиков
-      hide_subscriptions: 1, # не отображается количество подписчиков
+      inactive:           1,
+      hide_subscriptions: 1,
     }
 
     api_request('subscriptions/add', params)
